@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RNN Text Processing Visualization</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: white;
+            font-family: Arial, sans-serif;
+        }
+        .diagram-container {
+            width: 1200px;
+            height: 700px;
+            margin: -100px auto 0 auto;
+            position: relative;
+            background: white;
+        }
+        .title {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        .word {
+            position: absolute;
+            width: 80px;
+            height: 40px;
+            background: #E3F2FD;
+            border: 2px solid #1976D2;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #1976D2;
+            font-size: 14px;
+        }
+        .embedding {
+            position: absolute;
+            width: 60px;
+            height: 100px;
+            background: #F3E5F5;
+            border: 2px solid #7B1FA2;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: #7B1FA2;
+            text-align: center;
+        }
+        .rnn-cell {
+            position: absolute;
+            width: 120px;
+            height: 80px;
+            background: #FFF3E0;
+            border: 3px solid #F57C00;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #F57C00;
+        }
+        .hidden-state {
+            position: absolute;
+            width: 80px;
+            height: 60px;
+            background: #E8F5E8;
+            border: 2px solid #388E3C;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #388E3C;
+            text-align: center;
+        }
+        .arrow {
+            position: absolute;
+            font-size: 20px;
+            color: #666;
+        }
+        .label {
+            position: absolute;
+            font-size: 12px;
+            color: #666;
+            font-weight: bold;
+        }
+        .embedding-label {
+            position: absolute;
+            font-size: 11px;
+            color: #7B1FA2;
+            font-weight: bold;
+            text-align: center;
+        }
+        .process-label {
+            position: absolute;
+            font-size: 14px;
+            color: #333;
+            font-weight: bold;
+            text-align: center;
+        }
+        .vector-values {
+            font-size: 8px;
+            line-height: 1.2;
+        }
+        .time-step {
+            position: absolute;
+            font-size: 14px;
+            color: #666;
+            font-weight: bold;
+        }
+        .legend {
+            position: absolute;
+            bottom: 20px;
+            left: 50px;
+            background: #f8f8f8;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            width: 200px;
+            top: 580px;
+            height: 135px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 12px;
+        }
+        .legend-box {
+            width: 20px;
+            height: 15px;
+            margin-right: 8px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="diagram-container">
+
+        
+        <!-- Time step labels -->
+        <div class="time-step" style="top: 120px; left: 50px;">t=0</div>
+        <div class="time-step" style="top: 120px; left: 250px;">t=1</div>
+        <div class="time-step" style="top: 120px; left: 450px;">t=2</div>
+        <div class="time-step" style="top: 120px; left: 650px;">t=3</div>
+        
+        <!-- Input words -->
+        <div class="word" style="top: 150px; left: 20px;">"I"</div>
+        <div class="word" style="top: 150px; left: 220px;">"love"</div>
+        <div class="word" style="top: 150px; left: 420px;">"deep"</div>
+        <div class="word" style="top: 150px; left: 620px;">"learning"</div>
+        
+        <!-- Arrows from words to embeddings -->
+        <div class="arrow" style="top: 200px; left: 55px;">↓</div>
+        <div class="arrow" style="top: 200px; left: 255px;">↓</div>
+        <div class="arrow" style="top: 200px; left: 455px;">↓</div>
+        <div class="arrow" style="top: 200px; left: 655px;">↓</div>
+        
+        <!-- Embedding vectors -->
+        <div class="embedding" style="top: 220px; left: 30px;">
+            <div class="vector-values">0.2<br>-1.1<br>0.8<br>...<br>0.5</div>
+        </div>
+        <div class="embedding" style="top: 220px; left: 230px;">
+            <div class="vector-values">1.3<br>0.4<br>-0.7<br>...<br>0.9</div>
+        </div>
+        <div class="embedding" style="top: 220px; left: 430px;">
+            <div class="vector-values">-0.5<br>1.8<br>0.3<br>...<br>-1.2</div>
+        </div>
+        <div class="embedding" style="top: 220px; left: 630px;">
+            <div class="vector-values">0.7<br>-0.3<br>1.5<br>...<br>0.1</div>
+        </div>
+        
+        <!-- Embedding labels -->
+        <div class="embedding-label" style="top: 330px; left: 15px; width: 90px;">Word<br>Embedding<br>x⁽⁰⁾</div>
+        <div class="embedding-label" style="top: 330px; left: 215px; width: 90px;">Word<br>Embedding<br>x⁽¹⁾</div>
+        <div class="embedding-label" style="top: 330px; left: 415px; width: 90px;">Word<br>Embedding<br>x⁽²⁾</div>
+        <div class="embedding-label" style="top: 330px; left: 615px; width: 90px;">Word<br>Embedding<br>x⁽³⁾</div>
+        
+        <!-- Arrows from embeddings to RNN cells -->
+        <div class="arrow" style="top: 360px; left: 55px;">↓</div>
+        <div class="arrow" style="top: 360px; left: 255px;">↓</div>
+        <div class="arrow" style="top: 360px; left: 455px;">↓</div>
+        <div class="arrow" style="top: 360px; left: 655px;">↓</div>
+        
+        <!-- RNN cells -->
+        <div class="rnn-cell" style="top: 380px; left: 10px;">
+            <div>RNN</div>
+            <div style="font-size: 12px;">Cell</div>
+        </div>
+        <div class="rnn-cell" style="top: 380px; left: 210px;">
+            <div>RNN</div>
+            <div style="font-size: 12px;">Cell</div>
+        </div>
+        <div class="rnn-cell" style="top: 380px; left: 410px;">
+            <div>RNN</div>
+            <div style="font-size: 12px;">Cell</div>
+        </div>
+        <div class="rnn-cell" style="top: 380px; left: 610px;">
+            <div>RNN</div>
+            <div style="font-size: 12px;">Cell</div>
+        </div>
+        
+        <!-- Hidden state arrows and connections -->
+        <div class="arrow" style="top: 420px; left: 130px; font-size: 16px;">→</div>
+        <div class="arrow" style="top: 420px; left: 330px; font-size: 16px;">→</div>
+        <div class="arrow" style="top: 420px; left: 530px; font-size: 16px;">→</div>
+        
+        <!-- Arrows from RNN cells to hidden states -->
+        <div class="arrow" style="top: 470px; left: 55px;">↓</div>
+        <div class="arrow" style="top: 470px; left: 255px;">↓</div>
+        <div class="arrow" style="top: 470px; left: 455px;">↓</div>
+        <div class="arrow" style="top: 470px; left: 655px;">↓</div>
+        
+        <!-- Hidden states -->
+        <div class="hidden-state" style="top: 490px; left: 30px;">
+            <div style="font-size: 10px;">h⁽⁰⁾</div>
+            <div style="font-size: 8px;">[0.3, -0.1, 0.7]</div>
+        </div>
+        <div class="hidden-state" style="top: 490px; left: 230px;">
+            <div style="font-size: 10px;">h⁽¹⁾</div>
+            <div style="font-size: 8px;">[0.8, 0.2, -0.4]</div>
+        </div>
+        <div class="hidden-state" style="top: 490px; left: 430px;">
+            <div style="font-size: 10px;">h⁽²⁾</div>
+            <div style="font-size: 8px;">[0.1, 0.9, 0.3]</div>
+        </div>
+        <div class="hidden-state" style="top: 490px; left: 630px;">
+            <div style="font-size: 10px;">h⁽³⁾</div>
+            <div style="font-size: 8px;">[0.6, -0.2, 0.8]</div>
+        </div>
+        
+
+        
+        <!-- Hidden state flow arrows (curved) -->
+        <svg style="position: absolute; top: 380px; left: 0; width: 800px; height: 200px; pointer-events: none;">
+            <defs>
+                <marker id="arrowhead" markerWidth="10" markerHeight="7" 
+                        refX="10" refY="3.5" orient="auto">
+                    <polygon points="0 0, 10 3.5, 0 7" fill="#388E3C" />
+                </marker>
+            </defs>
+            <!-- Hidden state connections -->
+            <path d="M 110 60 Q 170 20 210 60" stroke="#388E3C" stroke-width="2" 
+                  fill="none" marker-end="url(#arrowhead)" />
+            <path d="M 310 60 Q 370 20 410 60" stroke="#388E3C" stroke-width="2" 
+                  fill="none" marker-end="url(#arrowhead)" />
+            <path d="M 510 60 Q 570 20 610 60" stroke="#388E3C" stroke-width="2" 
+                  fill="none" marker-end="url(#arrowhead)" />
+        </svg>
+        
+        <!-- Labels for hidden state connections -->
+        <div class="label" style="top: 350px; left: 150px; color: #388E3C;">h⁽⁰⁾</div>
+        <div class="label" style="top: 350px; left: 350px; color: #388E3C;">h⁽¹⁾</div>
+        <div class="label" style="top: 350px; left: 550px; color: #388E3C;">h⁽²⁾</div>
+        
+        <!-- Equation inside each cell -->
+        <div style="position: absolute; top: 580px; left: 350px; background: white; border: 1px solid #333; border-radius: 5px; padding: 12px; font-size: 14px; color: #333; width: 350px;">
+            <div style="font-weight: bold; text-align: center; margin-bottom: 5px;">RNN Cell Computation:</div>
+            <div style="text-align: center; margin-bottom: 8px;">h<sup>(t)</sup> = tanh(W<sub>hh</sub>h<sup>(t-1)</sup> + W<sub>xh</sub>x<sup>(t)</sup> + b)</div>
+            <div style="font-size: 12px; text-align: center; color: #666;">
+              W<sub>hh</sub>h<sup>(t-1)</sup>: memory from previous step </br/> W<sub>xh</sub>x<sup>(t)</sup>: current word input
+            </div>
+        </div>
+        
+        <!-- Legend -->
+        <div class="legend">
+            <div style="font-weight: bold; margin-bottom: 10px;">Components:</div>
+            <div class="legend-item">
+                <div class="legend-box" style="background: #E3F2FD; border: 1px solid #1976D2;"></div>
+                Input Words (Raw Text)
+            </div>
+            <div class="legend-item">
+                <div class="legend-box" style="background: #F3E5F5; border: 1px solid #7B1FA2;"></div>
+                Word Embeddings (Vector Representation)
+            </div>
+            <div class="legend-item">
+                <div class="legend-box" style="background: #FFF3E0; border: 1px solid #F57C00;"></div>
+                RNN Processing Cells
+            </div>
+            <div class="legend-item">
+                <div class="legend-box" style="background: #E8F5E8; border: 1px solid #388E3C;"></div>
+                Hidden States (Memory)
+            </div>
+        </div>
+        
+
+    </div>
+</body>
+</html>
