@@ -1,0 +1,7 @@
+**/.DS_Store
+
+# Ignore ipython notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore python cache files
+__pycache__/
