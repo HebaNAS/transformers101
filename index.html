@@ -28,11 +28,10 @@
 
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pts/0.10.6/pts.min.js"></script>
   </head>
 
   <body>
-    <a href="#webslides" class="skip-link">Skip to main content</a>
+    <!-- <a href="#webslides" class="skip-link">Skip to main content</a> -->
     <header role="banner">
       <nav role="navigation">
         <!--<p class="logo">-->
@@ -55,91 +54,78 @@
 
         <!-- Slide 1 -->
         <section id="section-1" data-section-title="Title">
-          <span class="background" style="background-image:url('images/first.png');"></span>
-          <div class="wrap">
-            <h1 class="text-landing text-serif text-white size-60"><span style="text-decoration: underline; font-style: normal;">Transformers</span></h1>
-            <p class="text-subtitle text-white" style="text-transform: capitalize; line-height: 1.2em; font-size: 3.5rem; margin-top: 1rem;">The Building Blocks <br/> of Large Language Models (LLMs)</p>
+          <span class="background" style="background-image:url('images/first.png'); background-size: cover; background-position: center center;"></span>
+          <div class="wrap" style="margin-top: 8.5vh;">
+            <h1 class="text-landing text-serif text-white text-shadow"><span style="text-decoration: underline; font-style: normal;">Transformers</span></h1>
+            <p class="text-intro dm-serif-text-regular text-white text-shadow" style="text-transform: capitalize; margin-top: -1.2rem;">The Architecture Behind Modern AI</p>
+            
+            <!-- Presenter Information -->
+            <div class="fadeInUp">
+              <span class="text-white text-shadow text-slide-caption">Prepared &amp; presented by</span>
+              <h3 class="dm-serif-text-regular text-white text-intro text-shadow">Heba El-Shimy</h3>
+              <div style="margin-top: 1rem;" class="text-slide-caption">
+                <span class="text-white text-shadow" style="display: block;">Email: <a href="mailto:H.Elshimy@hw.ac.uk" target="_blank" style="color: #ffffff; text-decoration: underline;">H.Elshimy@hw.ac.uk</a></span>
+              </div>
+              <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="display: inline-block; margin-top: 10px;">
+                <img src="https://i.creativecommons.org/l/by/4.0/80x15.png" alt="Creative Commons Attribution 4.0 International License" style="height: clamp(12px, 1.5vw, 24px); width: auto;" />
+              </a>
+            </div> 
+          </div>
+
+          <!-- QR Code -->
+          <div style="position: absolute; top: 20px; right: 20px; opacity: 0.65; font-size: 1rem;">
+            <span class="text-white text-slide-caption" style="text-align: center; display: block; margin-bottom: 0.5rem;">Link to slides</span>
+            <img src="images/Image.png" alt="QR code linking to presentation slides" style="width: 8rem;">
           </div>
         </section>
 
         <!-- Slide 2 -->
-        <section id="section-2" class="bg-gradient-white" data-section-title="Introduction">
-          <div class="aligncenter fadeInUp">
-            <span>Prepared &amp; presented by</span>
-            <h3 class="dm-serif-text-regular">Heba El-Shimy</h3>
-            <div class="aligncenter" style="margin-top: 1rem;">
-              <span style="display: block;">Email: <a href="mailto:H.Elshimy@hw.ac.uk" target="_blank">H.Elshimy@hw.ac.uk</a></span>
+        <section id="section-2" class="bg-gradient-white" data-section-title="Previous Lecture">
+          <div class="wrap">
+            <div>
+              <h3 class="dm-serif-text-regular slide-title">Last Lecture: <span>Text Processing &amp; RNNs</span></h3>
             </div>
-            <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="display: inline-block; margin-top: 10px;">
-              <img src="https://i.creativecommons.org/l/by/4.0/80x15.png" alt="Creative Commons Attribution 4.0 International License" style="height: 15px; width: auto;" />
-            </a>
-            <hr>
-            
-            <div style="margin-top: 50px;">
-              <span>Based on the following textbook (suggested reading)</span>
-              <h5 class="dm-serif-text-regular">Raschka, S. (2025) Build a large language model (from scratch) [First edition].</h5>
-              <p>Available on HWU Discovery: <a href="https://discovery.hw.ac.uk" target="_blank">discovery.hw.ac.uk</a></p>
-              <img src="images/book.png" class="size-30" alt="Book cover: Build a Large Language Model from Scratch by Sebastian Raschka" style="filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.15));" />
+            <hr class="hr">
+            <div class="c-responsive">
+              <ul>
+                <li style="margin-bottom: 0.6rem;">Deep learning models cannot process raw text directly</li>
+                <li style="margin-bottom: 0.6rem;">We need a way to convert text into a format that neural networks can process (numeric)</li>
+                <li><span style="font-style: italic; text-decoration: underline;">Embedding:</span> is the process of representing discrete textual data into points in a continuous vector space</li>
+              </ul>
+              <img src="images/text-embeddings.png" class="aligncenter" alt="Image of the pipeline to process text for deep learning models by creating text embeddings" style="filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.15)); border-radius: 1rem; margin-top: 2rem; width: 70%;" />
+              <p class="aligncenter text-slide-caption" style="color: #666; font-style: italic; margin-top: -3rem;">Source: Raschka, S. (2025) Build a large language model (from scratch). 1st edn. Manning Publications.</p>
             </div>
-          </div>
-
-          <div style="position: absolute; bottom: 50px; right: 20px; width: 8.5%;">
-            <span style="text-align: center;">Link to slides</span>
-            <img src="images/Image.png" alt="QR code linking to presentation slides" class="qr-code">
           </div>
         </section>
 
         <!-- Slide 3 -->
-        <section id="section-3" class="bg-gradient-white slide-top" data-section-title="Previous Lecture">
-          <div class="wrap" style="margin: 1rem 0 0 5rem;">
-            <h2 class="dm-serif-text-regular slide-title">Last Lecture:</h2><span class="text-intro">Text Processing &amp; RNNs</span>
-            <hr>
-            <div style="font-size: 2.4rem;">
-              <ul>
-                <li style="margin-bottom: 1.8rem;">Deep learning models cannot process raw text directly</li>
-                <li style="margin-bottom: 1.8rem;">We need a way to convert text into a format that neural networks can process (numeric)</li>
-                <li><span style="font-style: italic; text-decoration: underline;">Embedding:</span> is the process of representing discrete textual data into points in a continuous vector space</li>
-              </ul>
-              <img src="images/text-embeddings.png" class="aligncenter size-60" alt="Image of the pipeline to process text for deep learning models by creating text embeddings" style="filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.15)); border-radius: 1rem; margin-top: 4em;" />
-              <p class="aligncenter" style="font-size: 1.2rem; color: #666; font-style: italic;">Source: Raschka, S. (2025). <em>Build a large language model (from scratch)</em> [First edition].</p>
-            </div>
-          </div>
-        </section>
-
-        <!-- Slide 4 -->
-        <section id="section-4" class="bg-gradient-white slide-top" data-section-title="Previous Lecture">
-          <div class="wrap" style="margin: 1rem 0 0 5rem;">
-            <h2 class="dm-serif-text-regular slide-title">Last Lecture:</h2><span class="text-intro">Text Processing &amp; RNNs</span>
-            <hr>
-            <div style="display: flex; align-items: flex-start; gap: 3rem;">
-              <!-- Left column: List (50%) -->
-              <div  class="size-50" style="font-size: 2.4rem;">
+        <section id="section-3" class="bg-gradient-white" data-section-title="Previous Lecture">
+          <div class="wrap">
+            <h3 class="dm-serif-text-regular slide-title">Last Lecture: <span>Text Processing &amp; RNNs</span></h3>
+            <hr class="hr">
+            <div class="c-responsive" style="min-height: 60vh;">
                 <ul>
-                  <li style="margin-bottom: 3.8rem;">RNNs take the text embeddings as input and process them <span style="text-decoration: underline;">one at a time</span> in sequence</li>
-                  <li style="margin-bottom: 3.8rem;">At each step, the RNN maintains a "hidden state" that acts as memory, storing information about all the words it has seen so far in the sequence</li>
-                  <li>The hidden state gets updated at each time step by combining the current word's embedding with the memory from the previous step, allowing the network to understand context</li> 
+                  <li style="margin-bottom: 1.8rem;">RNNs take the text embeddings as input and process them <span style="text-decoration: underline;">one at a time</span> in sequence</li>
+                  <li>At each step, the RNN maintains a "hidden state" that acts as memory, storing information about all the words it has seen so far in the sequence</li>
                 </ul>
-              </div>
               
               <!-- Right column: HTML Diagram (50%) -->
-        <div class="size-70" style="position: relative; left: 7.5%;">
-                <iframe src="assets/rnn_text_processing_diagram.html" 
-                        style="width: 100%; height: 700px; border: 1px solid #ddd; border-radius: 8px; 
-                               transform: scale(0.7); transform-origin: top left; filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.15));"
-                        scrolling="no"></iframe>
-                <p style="font-size: 1.2rem; color: #666; font-style: italic; text-align: center; margin-top: -200px; width: 75%; margin-left: 0;">Created by Claude AI</p>
-              </div>
+              <!-- <div class="size-50"> -->
+              <!--   <iframe src="assets/rnn_text_processing_diagram.html"  -->
+              <!--           class="rnn-diagram-iframe" scrolling="no"></iframe> -->
+              <!--   <p class="aligncenter text-slide-caption" style="color: #666; font-style: italic; margin-top: 4vh;">Created by Claude AI</p> -->
+              <!-- </div> -->
             </div>
           </div>
         </section>
 
         
-        <!-- Slide 5 -->
-        <section id="section-5" class="bg-gradient-white slide-top" data-section-title="Outline"> 
-          <div class="size-70 content-left" style="margin: 7rem 0 0 10rem;">
+        <!-- Slide 4 -->
+        <section id="section-4" class="bg-gradient-white" data-section-title="Outline"> 
+          <div class="wrap">
             <h3 class="dm-serif-text-regular slide-title">This Lecture: Outline</h3>
-            <hr>
-            <div class="toc">
+            <hr class="hr">
+            <div class="toc" style="min-height: 60vh; margin-left: 2.4rem;">
               <ol>
                 <li>
                   <a href="#slide=6" title="Go to LLMs">
@@ -172,12 +158,28 @@
             </div>
         </section>
 
+        <!-- Slide 5 -->
+        <section id="section-5" class="bg-gradient-white" data-section-title="Outline">
+          <div class="wrap">
+            <h3 class="dm-serif-text-regular slide-title">This Lecture: Learning Objectives</h3>
+            <hr class="hr">
+            <div class="c-responsive" style="min-height: 60vh;">
+              <p>By the end of this lecture, you should be able to:</p>
+                <ul>
+                  <li style="margin-bottom: 1.8rem;">Understand the components of a transformer architecture</li>
+                  <li style="margin-bottom: 1.8rem;">Explain why transformers are a significant advancement over RNNs and how they became the foundation of LLMs</li>
+                  <li style="margin-bottom: 1.8rem;">Recognize the importance self-attention for transformer success</li>
+                </ul>
+            </div>
+          </div>
+        </section>
+
         <!-- Slide 6 -->
-        <section id="section-6" class="bg-gradient-white slide-top" data-section-title="LLMs">
-          <div class="wrap" style="margin: 1rem 0 0 5rem;">
+        <section id="section-6" class="bg-gradient-white" data-section-title="LLMs">
+          <div class="wrap">
             <h2 class="dm-serif-text-regular slide-title">LLMs</h2>
-            <hr>
-            <div style="font-size: 2.4rem;"> 
+            <hr class="hr">
+            <div class="text-slide-body"> 
               <div style='position: relative; padding-bottom: 32%; padding-top: 0px; height: 0; overflow: hidden; width: 70%; margin: 0 auto;'><iframe sandbox='allow-scripts allow-same-origin allow-presentation' allowfullscreen='true' allowtransparency='true' frameborder='0' height='315' src='https://www.mentimeter.com/app/presentation/al47unrbwers2zbeam8pdmau7h34hs39/embed' style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;' width='320'></iframe></div>
             </div>
           </div>
@@ -188,10 +190,10 @@
           <div class="wrap" style="margin: 1rem 0 0 5rem;">
             <h2 class="dm-serif-text-regular slide-title">LLMs</h2>
             <hr>
-            <div style="font-size: 2.4rem;"> 
-              <p class="size-90">An LLM is a deep neural network designed to understand, generate, and respond to human-like text. These models are trained on massive amounts of text data, sometimes encompassing large portions of the entire available text on the internet.</p>
+            <div class="text-slide-body"> 
+              <p>An LLM is a deep neural network designed to understand, generate, and respond to human-like text. These models are trained on massive amounts of text data, sometimes encompassing large portions of the entire available text on the internet.</p>
               <img src="images/ai.png" class="aligncenter size-60" alt="Hierarchical depiction of the relationship between the different fields if AI, LLMs represent a specific application of deep learning techniques, using their ability to process and generate human-like text." style="filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.15)); border-radius: 1rem;" />
-              <p class="aligncenter" style="font-size: 1.2rem; color: #666; font-style: italic; margin-top: -2.4em;">Source: Raschka, S. (2025). <em>Build a large language model (from scratch)</em> [First edition].</p>
+              <p class="aligncenter text-slide-caption" style="color: #666; font-style: italic; margin-top: -2.4em;">Source: Raschka, S. (2025) Build a large language model (from scratch). 1st edn. Manning Publications.</p>
             </div>
           </div>
         </section>
@@ -201,13 +203,13 @@
           <div class="wrap" style="margin: 1rem 0 0 5rem;">
             <h2 class="dm-serif-text-regular slide-title">Creating an LLM</h2><span class="text-intro">Two Stages</span>
             <hr>
-            <div style="font-size: 2.4rem;"> 
+            <div class="text-slide-body"> 
               <ol style="width: 95%;">    
                 <li style="margin-bottom: 1.8rem;"><span style="font-style: italic; text-decoration: underline;">Pretraining:</span> training on a large, diverse dataset to develop a broad understanding of language and create a "<span style="font-style: italic;">foundation model</span>"</li>
                 <li><span style="font-style: italic; text-decoration: underline;">Fine-tuning:</span> training on a narrower dataset that is more specific to particular tasks or domains (could involve instructions)</li>
               </ol>
               <img src="images/llm.png" class="aligncenter" alt="Pretraining an LLM involves next-word prediction on large text datasets. A pretrained LLM can then be fine-tuned using a smaller labeled dataset." style="filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.15)); border-radius: 1rem; width: 40%; margin-top: -0.4rem;" />
-              <p class="aligncenter" style="font-size: 1.2rem; color: #666; font-style: italic; margin-top: -2.4em;">Source: Raschka, S. (2025). <em>Build a large language model (from scratch)</em> [First edition].</p>
+              <p class="aligncenter text-slide-caption" style="color: #666; font-style: italic; margin-top: -2.4em;">Source: Raschka, S. (2025) Build a large language model (from scratch). 1st edn. Manning Publications.</p>
             </div>
           </div>
         </section>
@@ -217,7 +219,7 @@
           <div class="wrap" style="margin: 1rem 0 0 5rem;">
             <h2 class="dm-serif-text-regular slide-title">Transformers</h2><span class="text-intro">The Building Blocks of LLMs</span>
             <hr>
-            <div style="font-size: 2.4rem; display: flex; align-items: flex-start; gap: 2rem;">
+            <div class="text-slide-body" style="display: flex; align-items: flex-start; gap: 2rem;">
               <div class="size-50">
                 <p>A typical transformer consists of two main components:</p>
                 <ul>
@@ -228,77 +230,77 @@
               </div>
               <!-- Right column: HTML Diagram (50%) -->
               <div class="size-40"> 
-                <div class="flip-container" style="width: 75%; margin: 0 0 0 12.5%; perspective: 1000px; cursor: pointer;">
-                  <div class="flip-card" style="position: relative; width: 100%; height: 425px; text-align: center; transition: transform 0.6s; transform-style: preserve-3d;">
-                    <div class="flip-card-front" style="position: absolute; width: 100%; height: 100%; backface-visibility: hidden; padding: 5px;">
+                <div id="flip-container" style="width: 75%; margin: 0 0 0 12.5%; perspective: 1000px; cursor: pointer;">
+                  <div id="flip-card" style="position: relative; width: 100%; height: 425px; text-align: center; transition: transform 0.6s; transform-style: preserve-3d;">
+                    <div style="position: absolute; width: 100%; height: 100%; backface-visibility: hidden; padding: 5px;">
                       <img src="images/simple-transformer.png" alt="Simple Transformer diagram" style="width: 175%; height: 175%; object-fit: contain; filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.15)); margin-top: -40%;" />
                     </div>
-                    <div class="flip-card-back" style="position: absolute; width: 112.5%; height: 112.5%; backface-visibility: hidden; transform: rotateY(180deg) translateX(40px);">
+                    <div style="position: absolute; width: 112.5%; height: 112.5%; backface-visibility: hidden; transform: rotateY(180deg) translateX(40px);">
                       <img src="images/transformer.png" alt="Transformer architecture" style="width: 90%; height: 90%; object-fit: contain; filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.15));" />
                     </div>
                   </div>
                 </div>
-                <p class="aligncenter" style="font-size: 1.5rem; color: #666; margin-top: 0.4rem;">Click to flip the card for detailed architecture</p>
-                <p class="aligncenter" style="font-size: 1rem; color: #666; margin-top: -3.6rem; line-height: 0.9rem;">Sources: 1. Claude AI. <br/> 2. Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A.N., Kaiser, Ł. and Polosukhin, I., 2017. Attention is all you need. <em>Advances in neural information processing systems</em>, 30.</p>
+                <p class="aligncenter text-slide-caption" style="color: #666; margin-top: 0.4rem;">Click to flip the card for detailed architecture</p>
+                <p class="aligncenter text-slide-caption" style="color: #666; margin-top: -3.6rem; line-height: 1.2;">Sources: 1. Claude AI. <br/> 2. Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A.N., Kaiser, Ł. and Polosukhin, I., 2017. Attention is all you need. <em>Advances in neural information processing systems</em>, 30.</p>
               </div>
             </div>
           </div>
         </section>
 
         <!-- Slide 10 -->
-        <section id="section-10" class="bg-gradient-white slide-top" data-section-title="Transformers">
-          <div class="wrap" style="margin: 1rem 0 0 5rem;">
-            <h2 class="dm-serif-text-regular slide-title">Transformers</h2><span class="text-intro">Different Flavors</span>
-            <hr>
-            <div style="font-size: 2.4rem;">
-              <div style="width: 100%; display: flex; justify-content: center;">
-                <ul class="flexblock gallery" style="max-height: 70vh; overflow: hidden; margin: 0; padding: 0; justify-content: center; background: none;">
-                  <li style="height: 400px; background: white; width: 27%;">
-                    <a href="#" style="background: white;">
-                      <figure style="background: white;">
-                        <img alt="Diagram showing encoder-decoder transformer architecture with bidirectional encoder processing input and autoregressive decoder generating output, used for translation tasks" src="images/encoder-decoder.png" style="height: 280px; object-fit: contain;">
-                        <figcaption style="background: white;">
-                          <h2 style="font-size: 2rem;">Encoder-Decoder</h2>
-                          <p style="font-size: 1.6rem;">Translation</p>
-                        </figcaption>
-                      </figure>
-                    </a>
-                  </li>
-                  <li style="height: 400px; background: white; width: 29%;">
-                    <a href="#" style="background: white;">
-                      <figure style="background: white;">
-                        <img alt="Diagram showing encoder-only transformer architecture (BERT-style) with bidirectional processing for text understanding and classification tasks" src="images/encoder-only.png" style="height: 280px; object-fit: contain;">
-                        <figcaption style="background: white;">
-                          <h2 style="font-size: 2rem;">Encoder-only (BERT)</h2>
-                          <p style="font-size: 1.6rem;">Text understanding</p>
-                        </figcaption>
-                      </figure>
-                    </a>
-                  </li>
-                  <li style="height: 400px; background: white; width: 27%;">
-                    <a href="#" style="background: white;">
-                      <figure style="background: white;">
-                        <img alt="Diagram showing decoder-only transformer architecture (GPT-style) with causal attention for autoregressive text generation" src="images/decoder-only.png" style="height: 280px; object-fit: contain;">
-                        <figcaption style="background: white;">
-                          <h2 style="font-size: 2rem;">Decoder-only (GPT)</h2>
-                          <p style="font-size: 1.6rem;">Text generation</p>
-                        </figcaption>
-                      </figure>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <p class="aligncenter" style="font-size: 1.2rem; color: #666; font-style: italic;">Source: Raschka, S. (2025). <em>Build a large language model (from scratch)</em> [First edition].</p>
-            </div>
-          </div>
-        </section>
+        <!-- <section id="section-10" class="bg-gradient-white slide-top" data-section-title="Transformers"> -->
+        <!--   <div class="wrap" style="margin: 1rem 0 0 5rem;"> -->
+        <!--     <h2 class="dm-serif-text-regular slide-title">Transformers</h2><span class="text-intro">Different Flavors</span> -->
+        <!--     <hr> -->
+        <!--     <div class="text-slide-body"> -->
+        <!--       <div style="width: 100%; display: flex; justify-content: center;"> -->
+        <!--         <ul class="flexblock gallery" style="max-height: 70vh; overflow: hidden; margin: 0; padding: 0; justify-content: center; background: none;"> -->
+        <!--           <li style="height: 400px; background: white; width: 27%;"> -->
+        <!--             <a href="#" style="background: white;"> -->
+        <!--               <figure style="background: white;"> -->
+        <!--                 <img alt="Diagram showing encoder-decoder transformer architecture with bidirectional encoder processing input and autoregressive decoder generating output, used for translation tasks" src="images/encoder-decoder.png" style="height: 280px; object-fit: contain;"> -->
+        <!--                 <figcaption style="background: white;"> -->
+        <!--                   <h2 style="font-size: 2rem;">Encoder-Decoder</h2> -->
+        <!--                   <p style="font-size: 1.6rem;">Translation</p> -->
+        <!--                 </figcaption> -->
+        <!--               </figure> -->
+        <!--             </a> -->
+        <!--           </li> -->
+        <!--           <li style="height: 400px; background: white; width: 29%;"> -->
+        <!--             <a href="#" style="background: white;"> -->
+        <!--               <figure style="background: white;"> -->
+        <!--                 <img alt="Diagram showing encoder-only transformer architecture (BERT-style) with bidirectional processing for text understanding and classification tasks" src="images/encoder-only.png" style="height: 280px; object-fit: contain;"> -->
+        <!--                 <figcaption style="background: white;"> -->
+        <!--                   <h2 style="font-size: 2rem;">Encoder-only (BERT)</h2> -->
+        <!--                   <p style="font-size: 1.6rem;">Text understanding</p> -->
+        <!--                 </figcaption> -->
+        <!--               </figure> -->
+        <!--             </a> -->
+        <!--           </li> -->
+        <!--           <li style="height: 400px; background: white; width: 27%;"> -->
+        <!--             <a href="#" style="background: white;"> -->
+        <!--               <figure style="background: white;"> -->
+        <!--                 <img alt="Diagram showing decoder-only transformer architecture (GPT-style) with causal attention for autoregressive text generation" src="images/decoder-only.png" style="height: 280px; object-fit: contain;"> -->
+        <!--                 <figcaption style="background: white;"> -->
+        <!--                   <h2 style="font-size: 2rem;">Decoder-only (GPT)</h2> -->
+        <!--                   <p style="font-size: 1.6rem;">Text generation</p> -->
+        <!--                 </figcaption> -->
+        <!--               </figure> -->
+        <!--             </a> -->
+        <!--           </li> -->
+        <!--         </ul> -->
+        <!--       </div> -->
+        <!--       <p class="aligncenter" style="font-size: 1.2rem; color: #666; font-style: italic;">Source: Raschka, S. (2025). <em>Build a large language model (from scratch)</em> [First edition].</p> -->
+        <!--     </div> -->
+        <!--   </div> -->
+        <!-- </section> -->
 
         <!-- Slide 11 -->
         <section id="section-11" class="bg-gradient-white slide-top" data-section-title="Transformers">
           <div class="wrap" style="margin: 1rem 0 0 5rem;">
             <h2 class="dm-serif-text-regular slide-title">Transformers</h2><span class="text-intro">As Building Blocks of LLMs</span>
             <hr>
-            <div style="font-size: 2.4rem;">
+            <div class="text-slide-body">
               <ul> 
                   <li style="margin-bottom: 1.8rem;">LLMs stack multiple transformer blocks, each containing self-attention and feed-forward components</li>
                   <li style="margin-bottom: 1.8rem;"><span style="font-style: italic;">The word <b>Large</b> (in <b style="text-decoration: underline;">L</b>LMs)</span> refers to the overall scale of the model, primarily determined by the number of parameters, which is influenced by both the <span style="text-decoration: underline;">number</span> of blocks (layers) stacked and the <span style="text-decoration: underline;">size</span> of each block</li>
@@ -318,12 +320,12 @@
           <div class="wrap" style="margin: 1rem 0 0 5rem;">
             <h2 class="dm-serif-text-regular slide-title">Transformers</h2><span class="text-intro">What Makes Them Special?</span>
             <hr>
-            <div style="font-size: 2.4rem;">
+            <div class="text-slide-body">
               <p style="margin-bottom: 1.8rem;">A quick look back at RNNs</p>
               <video src="assets/RNNAnimation.mp4" class="aligncenter size-50" autoplay loop controls muted style="filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.15)); border-radius: 1rem; margin-top: 1rem; max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;">
                 Your browser does not support the video tag.
               </video>
-              <p class="aligncenter" style="font-size: 1.2rem; color: #666; font-style: italic;">Source: animation created by Claude AI using Manim library based on example from Raschka, S. (2025). <em>Build a large language model (from scratch)</em> [First edition].</p> 
+              <p class="aligncenter" style="font-size: 1.2rem; color: #666; font-style: italic;">Source: animation created by Claude AI using Manim library based on example from Raschka, S. (2025) Build a large language model (from scratch). 1st edn. Manning Publications.</p> 
             </div>
           </div>
         </section>
@@ -333,11 +335,11 @@
           <div class="wrap" style="margin: 1rem 0 0 5rem;">
             <h2 class="dm-serif-text-regular slide-title">Transformers</h2><span class="text-intro">What Makes Them Special?</span>
             <hr>
-            <div style="font-size: 2.4rem;">
+            <div class="text-slide-body">
               <video src="assets/TransformerAnimation.mp4" class="aligncenter size-60" autoplay loop controls muted style="filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.15)); border-radius: 1rem; margin-top: 1rem; max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;">
                 Your browser does not support the video tag.
               </video>
-              <p class="aligncenter" style="font-size: 1.2rem; color: #666; font-style: italic;">Source: animation created by Claude AI using Manim library based on example from Raschka, S. (2025). <em>Build a large language model (from scratch)</em> [First edition].</p> 
+              <p class="aligncenter" style="font-size: 1.2rem; color: #666; font-style: italic;">Source: animation created by Claude AI using Manim library based on example from Raschka, S. (2025) Build a large language model (from scratch). 1st edn. Manning Publications.</p> 
             </div>
           </div>
         </section>
@@ -347,7 +349,7 @@
           <div class="wrap" style="margin: 1rem 0 0 5rem;">
             <h2 class="dm-serif-text-regular slide-title">Quiz</h2>
             <hr>
-            <div style="font-size: 2.4rem;"> 
+            <div class="text-slide-body"> 
               <div style='position: relative; padding-bottom: 32%; padding-top: 0px; height: 0; overflow: hidden; width: 70%; margin: 0 auto;'><iframe sandbox='allow-scripts allow-same-origin allow-presentation' allowfullscreen='true' allowtransparency='true' frameborder='0' height='315' src='https://www.mentimeter.com/app/presentation/algjapus7uodsqgtkarr4xg8jjwht5b9/embed' style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;' width='320'></iframe></div>
             </div>
           </div>
@@ -358,7 +360,7 @@
           <div class="wrap" style="margin: 1rem 0 0 5rem;">
             <h2 class="dm-serif-text-regular slide-title">Attention is All You Need!</h2>
             <hr>
-            <div style="font-size: 2.4rem;">  
+            <div class="text-slide-body">  
               <ul> 
                   <li style="margin-bottom: 1.8rem;">Self-attention serves as the cornerstone of the transformer architecture and is the reason for its success, and subsequently, the success of LLMs</li>
                   <li style="margin-bottom: 1.8rem;">It learns the relationships and dependencies between various parts of the input, such as words in a sentence or pixels in an image.</li>
@@ -378,7 +380,7 @@
                 </div>
               </div>
 
-              <p class="aligncenter" style="font-size: 1.2rem; color: #666; font-style: italic; line-height: 1.2rem;">Read the paper: Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A.N., Kaiser, Ł. and Polosukhin, I., 2017. Attention is all you need. <em>Advances in neural information processing systems</em>, 30. <br/>Available at: <a href="https://arxiv.org/pdf/1706.03762" target="_blank">https://arxiv.org/pdf/1706.03762</a></p> 
+              <p class="aligncenter text-slide-caption" style="color: #666; font-style: italic; line-height: 1.4;">Read the paper: Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A.N., Kaiser, Ł. and Polosukhin, I., 2017. Attention is all you need. <em>Advances in neural information processing systems</em>, 30. <br/>Available at: <a href="https://arxiv.org/pdf/1706.03762" target="_blank">https://arxiv.org/pdf/1706.03762</a></p> 
             </div>
           </div>
         </section>
@@ -386,7 +388,7 @@
         <!-- Slide 16 -->
         <section id="section-16" class="bg-gradient-white slide-top" data-section-title="Self-Attention Mechanism">
           <div class="wrap" style="margin: 1rem 0 0 5rem;">
-            <div style="font-size: 2.4rem;">  
+            <div class="text-slide-body">  
               <!-- Self-Attention Visualization -->
               <iframe 
                 src="https://hebaelshimy-self-attention-demo.hf.space?__theme=light"
@@ -404,7 +406,7 @@
           <div class="wrap" style="margin: 1rem 0 0 5rem;">
             <h2 class="dm-serif-text-regular slide-title">Quiz</h2>
             <hr>
-            <div style="font-size: 2.4rem;"> 
+            <div class="text-slide-body"> 
               <div style='position: relative; padding-bottom: 32%; padding-top: 0px; height: 0; overflow: hidden; width: 70%; margin: 0 auto;'><iframe sandbox='allow-scripts allow-same-origin allow-presentation' allowfullscreen='true' allowtransparency='true' frameborder='0' height='315' src='https://www.mentimeter.com/app/presentation/al1ht4wshpo2iyeuvnzc8jfvpyx7tqks/embed' style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;' width='320'></iframe></div>
             </div>
           </div>
@@ -415,7 +417,7 @@
           <div class="wrap" style="margin: 1rem 0 0 5rem;">
             <h2 class="dm-serif-text-regular slide-title">Recap</h2>
             <hr>
-            <div style="font-size: 2.4rem;">
+            <div class="text-slide-body">
               <ul>
                 <li style="margin-bottom: 1.8rem;">Transformers revolutionized NLP by enabling parallel processing, solving RNN sequential limitations</li>
                 <li style="margin-bottom: 1.8rem;">Self-attention mechanism allows models to learn relationships between all input tokens simultaneously</li>
@@ -430,13 +432,25 @@
           <div class="wrap" style="margin: 1rem 0 0 5rem;">
             <h2 class="dm-serif-text-regular slide-title">Next Lecture</h2>
             <hr>
-            <div style="font-size: 2.4rem;">
+            <div class="text-slide-body">
               <ul>
                 <li style="margin-bottom: 1.8rem;">Tokenization: Converting text into tokens for transformer model input</li>
                 <li style="margin-bottom: 1.8rem;">Positional Encoding: Adding position information to token embeddings</li>
                 <li>Multi-Head Attention: Enhancing self-attention by capturing diverse relationships</li>
               </ul>
-        </div>
+            </div>
+
+            <!-- Textbook Reference -->
+            <div style="display: flex; flex-flow: row; align-items: center; margin-top: 1.5rem;">
+              <div style="flex-grow: 1;">
+                <span class="text-white text-slide-caption">Based on the textbook (suggested reading)</span>
+                <h5 class="dm-serif-text-regular text-white text-responsive-lg" style="margin: 0.5rem 0;">Raschka, S. (2025) Build a large language model (from scratch). 1st edn. Manning Publications.</h5>
+                <p class="text-white text-slide-caption" style="margin: 0.5rem 0;">Available on HWU Discovery: <a href="https://discovery.hw.ac.uk" target="_blank" style="color: #ffffff; text-decoration: underline;">discovery.hw.ac.uk</a></p>
+              </div>
+              <div style="flex-shrink: 0;">
+                <img src="images/book.png" alt="Book cover of Build a large language model (from scratch)" style="width: 10rem; height: auto; border-radius: 0.2rem; filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.15));">
+              </div>
+            </div>
           </div>
         </section>
 
@@ -451,17 +465,6 @@
     </main>
     <!--main-->
 
-
-    <!-- Image Overlay Container -->
-    <div id="imageOverlay" class="image-overlay">
-        <div class="overlay-content" style="background-color: rgb(255 255 255); color: #333;">
-          <button class="close-button" aria-label="Close expanded image" type="button">&times;</button>
-          <img id="expandedImg" src="" alt="Expanded Image">
-          <div id="overlayCaption"></div>
-        </div>
-      </div>
-    </section>
-
     <!-- Progress Bar -->
     <div class="progress-bar">
       <div class="progress-indicator"></div>
@@ -471,9 +474,9 @@
     </div>
 
     <footer>
-      <div class"wrap">
-        <p class="text-gray montserrat-400">
-          <a class="link-underline" href="https://www.macs.hw.ac.uk/~he4002/">Heba El-Shimy</a> &copy; July 2025
+      <div class="wrap text-slide-caption" style="margin-bottom: -1.5rem;">
+        <p class="montserrat-400 text-shadow">
+        <a class="link-underline" href="https://www.macs.hw.ac.uk/~he4002/">Heba El-Shimy</a> &copy; July 2025
         </p>
       </div>
     </footer>
@@ -487,13 +490,12 @@
     
     <script src="js/progress-bar.js"></script>
     <script src="js/logo.js"></script>
-    <script src="js/image-expand.js"></script>
     
     <!-- Flip card script -->
     <script>
       document.addEventListener('DOMContentLoaded', function() {
-        const flipContainer = document.querySelector('.flip-container');
-        const flipCard = document.querySelector('.flip-card');
+        const flipContainer = document.querySelector('#flip-container');
+        const flipCard = document.querySelector('#flip-card');
         let isFlipped = false;
         
         if (flipContainer && flipCard) {
@@ -508,143 +510,7 @@
     <!-- OPTIONAL - svg-icons.js (fontastic.me - Font Awesome as svg icons) -->
     <script defer src="js/svg-icons.js"></script>
 
-    <!-- Script to initialize the Pts.js animation --> 
-    <script>
-      // Wait for DOM to be fully loaded
-      document.addEventListener('DOMContentLoaded', function() {
-        // Check if Pts.js is loaded
-        if (typeof Pts === 'undefined') {
-          console.error('Pts.js library not loaded. Please include it in your HTML head.');
-          return;
-        }
-        
-        // Animation variables - define at the global level to fix "animations is not defined" error
-        var animations = {};
-        
-        // List of slide IDs that should have the animation
-        const animationSlides = ['section-21', 'section-22'];
-        
-        // Initialize on page load for any visible slide
-        animationSlides.forEach(function(slideId) {
-          if (document.querySelector(`#${slideId}.current`)) {
-            initPtsAnimation(slideId);
-          }
-        });
-        
-        // Set up a simple checker that runs periodically
-        setInterval(function() {
-          animationSlides.forEach(function(slideId) {
-            const slide = document.getElementById(slideId);
-            if (slide && slide.classList.contains('current')) {
-              if (!animations[slideId] || !animations[slideId].isRunning) {
-                initPtsAnimation(slideId);
-              }
-            } else {
-              // If slide is not visible, stop animation
-              if (animations[slideId] && animations[slideId].space) {
-                animations[slideId].space.pause();
-                animations[slideId].isRunning = false;
-              }
-            }
-          });
-        }, 500);  // Check every 500ms
-        
-        // Function to initialize animation on a specific slide
-        function initPtsAnimation(slideId) {
-          // Return if animation is already running
-          if (animations[slideId] && animations[slideId].isRunning) {
-            return;
-          }
-          
-          // Get the container within this slide
-          const container = document.querySelector(`#${slideId} #pts-animation`);
-          if (!container) {
-            console.error('Animation container not found in slide', slideId);
-            return;
-          }
-          
-          // Clear the container
-          container.innerHTML = '';
-          
-          // Create canvas with correct size
-          const canvas = document.createElement('canvas');
-          canvas.id = `pts-canvas-${slideId}`;
-          canvas.style.width = '100%';
-          canvas.style.height = '100%';
-          container.appendChild(canvas);
-          
-          // Initialize Pts
-          const space = new Pts.CanvasSpace(`#${canvas.id}`).setup({
-            bgcolor: "transparent", 
-            resize: true,
-            retina: true
-          });
-          const form = space.getForm();
-          
-          // Initialize pairs array
-          var pairs = [];
-          
-          // Add the animation
-          space.add({
-            start: (bound) => {
-              let r = space.size.minValue().value / 2;
-              pairs = []; // Clear existing pairs
-              
-              // create 200 lines
-              for (let i = 0; i < 200; i++) {
-                let ln = new Pts.Group(
-                  Pts.Pt.make(2, r, true),
-                  Pts.Pt.make(2, -r, true)
-                );
-                ln.moveBy(space.center).rotate2D(i * Math.PI / 200, space.center);
-                pairs.push(ln);
-              }
-            },
-            
-            animate: (time, ftime) => {
-              // Clear with transparent background
-              space.clear("transparent");
-              
-              for (let i = 0, len = pairs.length; i < len; i++) {
-                // rotate each line by 0.1 degree and check collinearity with pointer
-                let ln = pairs[i];
-                ln.rotate2D(Pts.Const.one_degree / 10, space.center);
-                let collinear = Pts.Line.collinear(ln[0], ln[1], space.pointer, 0.1);
-                
-                if (collinear) {
-                  // Highlighted lines when collinear - subtle blue
-                  form.stroke("rgba(41, 98, 150, 0.4)").line(ln);
-                } else {
-                  // Regular lines - very faint colors that match your design
-                  let side = Pts.Line.sideOfPt2D(ln, space.pointer);
-                  // Using navy blue and teal tones with very low opacity
-                  form.stroke((side < 0) ? "rgba(23, 55, 94, 0.08)" : "rgba(0, 128, 128, 0.08)").line(ln);
-                }
-                
-                // Very subtle dots at line endpoints - almost invisible
-                form.fillOnly("rgba(200, 200, 200, 0.4)").points(ln, 0.3);
-              }
-              
-              // More subtle pointer indicator - navy blue dot
-              form.fillOnly("rgba(41, 98, 150, 0.7)").point(space.pointer, 2.5, "circle");
-            }
-          });
-          
-          // Start the animation
-          space.bindMouse().bindTouch().play();
-          
-          // Store the animation reference
-          animations[slideId] = {
-            space: space,
-            isRunning: true
-          };
-        }
-      });
-    </script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="js/self-attention-viz.js"></script>
-    <script src="js/temp-attention-viz.js"></script>
 
   </body>
 </html>
