@@ -14,6 +14,12 @@ class SelfAttentionVisualization {
     }
 
     init() {
+        // Skip initialization if running in headless mode (like decktape)
+        if (typeof window !== 'undefined' && window.navigator && window.navigator.webdriver) {
+            console.log('Skipping Three.js initialization in headless mode');
+            return false;
+        }
+
         this.container = document.getElementById(this.containerId);
         if (!this.container) {
             console.error(`Container with id '${this.containerId}' not found`);

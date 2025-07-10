@@ -1,0 +1,28 @@
+/* PDF Export CSS - Removes text shadows and problematic effects */
+
+/* Remove all text shadows for PDF export */
+.text-shadow {
+  text-shadow: none !important;
+}
+
+/* Ensure all text has no shadows */
+* {
+  text-shadow: none !important;
+}
+
+/* Remove any problematic background effects that might cause rendering issues */
+.background {
+  background-attachment: fixed !important;
+}
+
+/* Optimize for print/PDF */
+@media print {
+  * {
+    text-shadow: none !important;
+    box-shadow: none !important;
+  }
+  
+  .text-shadow {
+    text-shadow: none !important;
+  }
+}
