@@ -127,7 +127,7 @@ button:focus {
 .slide-title {
   font-size: 2.2rem;
   position: relative;
-  top: -6vh;
+  top: -4vh;
 }
 
 .slide-title span {
@@ -272,6 +272,24 @@ html {
 .text-slide-caption { 
   font-size: var(--slide-caption);
   line-height: 1.5;
+}
+
+.text-slide-caption-small {
+  font-size: calc(var(--slide-caption) * 0.75); /* 75% of caption size */
+  line-height: 1.4;
+}
+
+.flip-card-caption {
+  display: block;
+  width: 100%;
+  margin-top: 3.6rem;
+  color: #666;
+}
+
+@media (min-width: 1024px) and (max-width: 1499px) {
+  .flip-card-caption {
+    margin-top: 0.8rem;
+  }
 }
 
 /* Update existing slide titles to use new system */

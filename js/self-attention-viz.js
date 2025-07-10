@@ -44,10 +44,10 @@ class SelfAttentionVisualization {
         this.scene = new THREE.Scene();
         this.scene.background = new THREE.Color(0xffffff);
 
-        // Camera setup - zoomed in by 100% (closer position)
+        // Camera setup - medium zoom level
         const aspect = rect.width / rect.height;
         this.camera = new THREE.PerspectiveCamera(75, aspect, 0.1, 1000);
-        this.camera.position.set(0, 0, 4);  // Was 8, now 4 for 100% zoom
+        this.camera.position.set(0, 0, 3.25);  // Medium zoom: between 2.5 and 4
         this.camera.lookAt(0, 0, 0);
 
         // Renderer setup
@@ -276,7 +276,7 @@ function initSelfAttentionViz() {
 
 // Check if slide is visible and initialize accordingly
 function checkSelfAttentionSlide() {
-    const slide = document.getElementById('section-15');
+    const slide = document.getElementById('section-13');
     const container = document.getElementById('self-attention-viz');
     
     if (slide && container) {
@@ -338,7 +338,7 @@ function forceInitOnSlideVisible() {
     const callback = function(mutationsList, observer) {
         for (let mutation of mutationsList) {
             if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-                const slide14 = document.getElementById('section-14');
+                const slide14 = document.getElementById('section-13');
                 if (slide14 && (slide14.classList.contains('current') || slide14.classList.contains('show'))) {
                     setTimeout(() => {
                         if (!selfAttentionViz || !selfAttentionViz.isInitialized) {
